@@ -4,7 +4,7 @@
 #define EXIT_CMD "EXIT\n"
 
 /**
- * Dato che 0xAA in decimale è 170 > 128 (quindi non mi basta un byte) ho deciso di implementare la logica dell'automa consiederando una 
+ * Dato che 0xAA in decimale è 170 > 128 (quindi non mi basta la codifica ASCII a 7 bit) ho deciso di implementare la logica dell'automa consiederando una 
  * stringa piuttosto che un char.
  **/
  
@@ -56,13 +56,8 @@ void S5(char* in){
 	printf("You are in S5 with input %s \n", in);
 }
 
-void bin(char* in){
-}
-
-
 
 int main(){
-	
 	currentState = S1;
 	char* line;
 	size_t size, read;
@@ -75,11 +70,17 @@ int main(){
 			
 			(*currentState)(line);//delego la logica dell'automa allo stato corrente.
 			read = getline(&line, &size, stdin);
-			if(read == -1) printf("No line to read!\n"); //TODO: fai una cazzo di funzione senza ripetere sta robba.
+			if(read == -1) printf("No line to read!\n"); //TODO: fai una funzione senza ripetere sta robba.
 			if(strcmp(line, EXIT_CMD) == 0) break;
 	
 		}
 	}
+	/*
+	//TODO: Implement with different string then 0xAA and use char or unsigned char's-
+	unsigned char c; //Così posso assegnare il carattere associato a 0xAA
+	c = (unsigned char) getchar();
+	
+	*/
 	return 0;	
 }
 
