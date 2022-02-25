@@ -67,7 +67,6 @@ int main(){
 	else {
 		
 		while(read >0 ){
-			
 			(*currentState)(line);//delego la logica dell'automa allo stato corrente.
 			read = getline(&line, &size, stdin);
 			if(read == -1) printf("No line to read!\n"); //TODO: fai una funzione senza ripetere sta robba.
