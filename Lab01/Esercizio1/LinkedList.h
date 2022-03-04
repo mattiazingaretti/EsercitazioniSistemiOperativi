@@ -1,7 +1,7 @@
 #pragma once
 
 struct LinkedListItem;
-struct LinkedListHead;
+struct LinkedList;
 
 typedef struct LinkedListItem{
     struct LinkedListItem* prev;
@@ -10,21 +10,23 @@ typedef struct LinkedListItem{
 }LinkedListItem;
 
 
-typedef struct LinkedListHead{
+typedef struct LinkedList{
     struct LinkedListItem* head;
+    struct LinkedListItem* tail;
     int size;
-} LinkedListHead;
+} LinkedList;
 
 
-LinkedListHead* initList(LinkedListHead* head);
-LinkedListItem* findItem(LinkedListHead* head, LinkedListItem* target);
-void insertKItem(LinkedListHead* head , LinkedListItem* it, int pos);
-LinkedListItem* removeItem(LinkedListHead* head,  LinkedListItem* toRemove);
-void printList(LinkedListHead* head);
+LinkedListItem* initItem(LinkedListItem* it , int info);
+LinkedList* initList(LinkedList* list);
+LinkedListItem* findItem(LinkedList* list, LinkedListItem* target);
+void insertKItem(LinkedList* list , LinkedListItem* it, int pos);
+LinkedListItem* removeItem(LinkedList* list,  LinkedListItem* toRemove);
+void printList(LinkedList* list);
 
 //wrappers
-void appendItem(LinkedListHead* head, LinkedListItem* item);
-void addFirstItem(LinkedListHead* head, LinkedListItem* item);
+void appendItem(LinkedList* list, LinkedListItem* item);
+void addFirstItem(LinkedList* list, LinkedListItem* item);
 
 
 
