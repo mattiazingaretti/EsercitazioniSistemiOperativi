@@ -97,18 +97,40 @@ void insertKItem(LinkedList* list , LinkedListItem* item, int pos){
 
 }
 
-LinkedListItem* removeItem(LinkedList* list,  LinkedListItem* toRemove){
-    LinkedListItem* ret = findItem(list , toRemove);
-    if(ret){
-        printf("ret val %d \n", ret->info);
-       if(ret->next){
-           ret->next->prev = ret->prev;
-           ret->prev->next = ret->next;
-       }else{
-           ret->prev->next = NULL;
-       }
-       list->size -= 1;
+void removeItem(LinkedList* list,  LinkedListItem* toRemove){
+    LinkedListItem* ret= findItem(list, toRemove);
+
+    if(ret == NULL) return;
+
+    if(ret->prev == NULL){
+        if(ret->next){
+            list->head = ret->next;
+            ret->next->prev = list->head;
+            list->size -= 1;
+        }else{
+            list->size = 0;
+            ret = NULL;
+        }
+        return;
     }
+
+    if(ret->next == NULL){
+        if(ret->prev){
+            list->tail = ret->prev;
+            ret->prev->next = list->tail;
+            list->size -= 1;
+        }else{
+            list->size = 0;
+            ret = NULL;
+        }
+        return;
+    }
+
+    ret->prev->next = ret->next;
+    ret->next->prev = ret->prev;
+    list->size -= 1;
+    return;
+        
 }
 
 void printList(LinkedList* list){

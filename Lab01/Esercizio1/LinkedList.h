@@ -21,7 +21,7 @@ LinkedListItem* initItem(LinkedListItem* it , int info);
 LinkedList* initList(LinkedList* list);
 LinkedListItem* findItem(LinkedList* list, LinkedListItem* target);
 void insertKItem(LinkedList* list , LinkedListItem* it, int pos);
-LinkedListItem* removeItem(LinkedList* list,  LinkedListItem* toRemove);
+void removeItem(LinkedList* list,  LinkedListItem* toRemove);
 void printList(LinkedList* list);
 
 //wrappers

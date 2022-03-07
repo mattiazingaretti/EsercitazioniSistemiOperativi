@@ -16,9 +16,9 @@ int main(){
     insertKItem(l , it5 , 2);
     
     printList(l);
-    
     removeItem(l , it3);
-
+    removeItem(l , it5);
+    
     printList(l);
     return 0;
 }
